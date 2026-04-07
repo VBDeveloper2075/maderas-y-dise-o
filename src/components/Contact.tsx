@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-const WHATSAPP_NUMBER = "5491112345678"; // Reemplazar con número real
+const WHATSAPP_NUMBER = "5491150113830"; 
 const WHATSAPP_MESSAGE = "Hola, vi su web y me gustaría consultar por un proyecto.";
-const EMAIL = "contacto@carpinteria.com"; // Reemplazar con email real
+const EMAIL = "contacto@carpinteria.com"; 
 
 export default function Contact() {
   return (
