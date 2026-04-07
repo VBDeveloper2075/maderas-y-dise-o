@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const WHATSAPP_NUMBER = "5491112345678"; // Reemplazar con número real
+const WHATSAPP_NUMBER = "5491150113830"; 
 const WHATSAPP_MESSAGE = "Hola, vi su web y me gustaría solicitar un presupuesto para un mueble a medida.";
 
 export default function Hero() {
