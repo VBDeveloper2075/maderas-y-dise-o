@@ -1,33 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const WHATSAPP_NUMBER = "5491150113830"; 
-const WHATSAPP_MESSAGE = "Hola, vi su web y me gustaría solicitar un presupuesto para un mueble a medida.";
+const WHATSAPP_NUMBER = "5491150113830";
+const WHATSAPP_MESSAGE =
+  "Hola, vi su web y me gustaría solicitar un presupuesto para un mueble a medida.";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background image - placeholder hasta tener imagen real */}
-      <div className="absolute inset-0 bg-neutral-200">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 md:pt-28">
+      {/* Background */}
+      <div className="absolute inset-0 bg-neutral-300">
         <Image
           src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop"
-          alt="Mueble a medida estilo Bauhaus"
+          alt=""
           fill
           className="object-cover"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight max-w-4xl mx-auto leading-tight">
-          <span className="block">Pablo Moya Torres:</span>
-          <span className="block mt-2 font-medium">Muebles de Autor y Diseño a Medida</span>
-        </h1>
-        <p className="mt-6 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto font-light">
-          Especialista en optimizar espacios reducidos en Tres de Febrero
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+        <div className="relative mx-auto w-full max-w-xl sm:max-w-2xl lg:max-w-3xl h-40 sm:h-48 lg:h-56 mb-10">
+
+        </div>
+        <p className="text-xs sm:text-sm font-medium tracking-[0.28em] uppercase text-white/95">
+          Atelier de Carpintería
+        </p>
+        <p className="mt-3 text-sm sm:text-base font-light tracking-[0.2em] uppercase text-white/80">
+          Diseño en movimiento
+        </p>
+        <p className="mt-8 text-base sm:text-lg text-white/90 max-w-xl mx-auto font-light leading-relaxed">
+          Especialista en optimizar espacios reducidos en Tres de Febrero y Zona Oeste.
         </p>
         <Link
           href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}

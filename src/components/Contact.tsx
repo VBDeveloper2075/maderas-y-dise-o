@@ -6,9 +6,9 @@ const EMAIL = "contacto@carpinteria.com";
 
 export default function Contact() {
   return (
-    <section id="contacto" className="py-24 bg-white">
+    <section id="contacto" className="py-24 bg-[#fafafa] border-t border-neutral-200/60">
       <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-light text-neutral-900 tracking-tight mb-4">
+        <h2 className="text-3xl sm:text-4xl font-light text-[#333333] tracking-[0.06em] mb-4 uppercase">
           Contacto
         </h2>
         <p className="text-neutral-600 mb-12">
@@ -25,7 +25,7 @@ export default function Contact() {
           </div>
           <a
             href={`mailto:${EMAIL}`}
-            className="flex items-center justify-center gap-3 text-neutral-700 hover:text-amber-900 transition-colors"
+            className="flex items-center justify-center gap-3 text-neutral-700 hover:text-[#4a3728] transition-colors"
           >
             <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

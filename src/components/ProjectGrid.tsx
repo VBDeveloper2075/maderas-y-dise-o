@@ -96,7 +96,8 @@ const FALLBACK_PROJECTS: Project[] = [
 const PLACEHOLDER_IMAGES = [
   "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800",
   "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=800",
-  "https://images.unsplash.com/photo-1595428774223-ef52645120ce?q=80&w=800",
+  /* Escritorio / mueble flotante — imagen alternativa estable */
+  "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800",
   "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800",
   "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
   "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800",
@@ -112,9 +113,9 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
 
   return (
     <>
-      <section id="proyectos" className="py-24 bg-white">
+      <section id="proyectos" className="py-24 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-light text-neutral-900 tracking-tight text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-light text-[#333333] tracking-[0.06em] text-center mb-16 uppercase">
             Proyectos
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
@@ -128,7 +129,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
                 <button
                   key={project._id}
                   type="button"
-                  className="group relative aspect-[4/3] overflow-hidden bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-amber-900/20 focus:ring-offset-2"
+                  className="group relative aspect-[4/3] overflow-hidden bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-[#4a3728]/25 focus:ring-offset-2"
                   onClick={() => setLightboxProject(project)}
                 >
                   <Image

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
@@ -9,10 +10,20 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-neutral-400 py-12">
+    <footer className="bg-[#2a2a2a] text-neutral-400 py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+          <Link href="#" className="relative mx-auto md:mx-0 h-24 w-56 shrink-0 opacity-95 hover:opacity-100 transition-opacity">
+            <Image
+              src="/logo-footer.png"
+              alt="Pablo Elías — Atelier de Carpintería"
+              fill
+              className="object-contain object-left"
+              sizes="224px"
+            />
+          </Link>
+          <div className="flex flex-col items-center md:items-end gap-6 flex-1">
+          <div className="flex flex-wrap justify-center md:justify-end items-center gap-6 md:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -23,7 +34,7 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center justify-center md:justify-end gap-6">
             <a
               href="https://instagram.com"
               target="_blank"
@@ -47,10 +58,11 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+          </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-neutral-800 text-center text-sm">
-          <p>© {new Date().getFullYear()} Carpintería Tres de Febrero. Todos los derechos reservados.</p>
-          <p className="mt-1 text-neutral-500">Carpintería artesanal en Zona Oeste</p>
+        <div className="mt-8 pt-8 border-t border-neutral-700/80 text-center text-sm">
+          <p>© {new Date().getFullYear()} Pablo Elías · Atelier de Carpintería. Todos los derechos reservados.</p>
+          <p className="mt-1 text-neutral-500 tracking-wide">Tres de Febrero · Zona Oeste — Diseño en movimiento</p>
         </div>
       </div>
     </footer>

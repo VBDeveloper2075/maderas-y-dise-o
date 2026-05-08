@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-24 bg-neutral-50">
+    <section id="nosotros" className="py-24 bg-white border-y border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden bg-neutral-200">
@@ -15,7 +15,7 @@ export default function About() {
             />
           </div>
           <div>
-            <h2 className="text-3xl sm:text-4xl font-light text-neutral-900 tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl font-light text-[#333333] tracking-[0.06em] mb-6 uppercase">
               Nosotros
             </h2>
             <p className="text-neutral-600 leading-relaxed mb-4">

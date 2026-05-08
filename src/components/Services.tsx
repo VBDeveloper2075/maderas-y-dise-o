@@ -30,21 +30,21 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicios" className="py-24 bg-neutral-50">
+    <section id="servicios" className="py-24 bg-white border-y border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-light text-neutral-900 tracking-tight text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl font-light text-[#333333] tracking-[0.06em] text-center mb-16 uppercase">
           Servicios
         </h2>
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {services.map((service) => (
             <article
               key={service.title}
-              className="bg-white p-8 border border-neutral-100 hover:border-neutral-200 transition-colors group"
+              className="bg-[#fafafa] p-8 border border-neutral-200/80 hover:border-[#4a3728]/25 transition-colors group"
             >
-              <div className="text-amber-900/80 group-hover:text-amber-800 mb-6">
+              <div className="text-[#4a3728] group-hover:text-[#5c4433] mb-6 transition-colors">
                 {service.icon}
               </div>
-              <h3 className="text-xl font-medium text-neutral-900 mb-3 tracking-tight">
+              <h3 className="text-xl font-medium text-[#333333] mb-3 tracking-tight">
                 {service.title}
               </h3>
               <p className="text-neutral-600 leading-relaxed text-sm">

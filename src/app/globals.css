@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --background: #fafafa;
+  --foreground: #333333;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --brand-accent: #4a3728;
 }
 
 @theme inline {
