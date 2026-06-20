@@ -16,30 +16,20 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-neutral-200/80">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 min-h-[5rem] md:min-h-[5.75rem] py-2 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8 py-3 flex items-center justify-between">
         <Link
           href="#"
-          className="flex items-center gap-0.5 md:gap-1 shrink-0 min-w-0 transition-opacity hover:opacity-85"
+          className="w-1/3 flex items-center transition-opacity hover:opacity-85"
           aria-label="Pablo Elias — Atelier de Carpintería, inicio"
         >
-          <div className="relative h-14 w-36 md:h-16 md:w-44 lg:h-[4.5rem] lg:w-52 shrink-0">
-            <Image
-              src="/logo-principal.png"
-              alt=""
-              fill
-              className="object-contain object-left"
-              sizes="(max-width: 768px) 144px, (max-width: 1024px) 176px, 208px"
-              priority
-            />
-          </div>
-          <div className="flex flex-col items-start justify-center text-left min-w-0">
-            <span className="font-semibold text-[#4A443F] tracking-[0.14em] sm:tracking-[0.16em] text-sm sm:text-base md:text-lg lg:text-xl leading-none">
-              PABLO ELIAS
-            </span>
-            <span className="mt-0.5 font-normal text-[#4A443F] tracking-[0.12em] sm:tracking-[0.14em] text-[10px] sm:text-[11px] md:text-xs leading-none">
-              ATELIER DE CARPINTERÍA
-            </span>
-          </div>
+          <Image
+            src="/navbar-imagen.png"
+            alt="Pablo Elias — Atelier de Carpintería"
+            width={320}
+            height={50}
+            className="w-full object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop navigation */}

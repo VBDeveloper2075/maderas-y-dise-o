@@ -7,7 +7,7 @@ const WHATSAPP_MESSAGE =
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 md:pt-28">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
       {/* Background */}
       <div className="absolute inset-0 bg-neutral-300">
         <Image
@@ -23,9 +23,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
-        <div className="relative mx-auto w-full max-w-xl sm:max-w-2xl lg:max-w-3xl h-40 sm:h-48 lg:h-56 mb-10">
-
-        </div>
         <p className="text-xs sm:text-sm font-medium tracking-[0.28em] uppercase text-white/95">
           Atelier de Carpintería
         </p>

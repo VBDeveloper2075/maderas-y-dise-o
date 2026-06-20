@@ -116,7 +116,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
       <section id="proyectos" className="py-24 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-light text-[#333333] tracking-[0.06em] text-center mb-16 uppercase">
-            Proyectos
+            Nuestro Destacado
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {displayProjects.map((project, index) => {
