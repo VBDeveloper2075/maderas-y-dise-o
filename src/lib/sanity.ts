@@ -4,7 +4,21 @@
  * Variables en Netlify: NEXT_PUBLIC_SANITY_PROJECT_ID, NEXT_PUBLIC_SANITY_DATASET
  */
 
-import type { Project } from "@/types/project";
+export interface SanityImage {
+  _type: "image";
+  asset: { _ref: string; _type: "reference" };
+  hotspot?: { x: number; y: number; height: number; width: number };
+}
+
+export interface Project {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  location?: string;
+  mainImage: SanityImage;
+  images?: SanityImage[];
+  description?: string;
+}
 
 const GROQ = `*[_type == "project"] | order(order asc) { _id, title, slug, location, mainImage, images, description }`;
 

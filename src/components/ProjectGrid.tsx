@@ -2,114 +2,23 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import type { Project } from "@/types/project";
+import type { Project } from "@/lib/sanity";
+import { urlFor } from "@/lib/image";
 
 interface ProjectGridProps {
   projects: Project[];
 }
 
-// Helper: usa Sanity si hay asset válido, sino placeholder
-function getImageUrl(project: Project, index: number): string {
-  const ref = project.mainImage?.asset?._ref;
-  if (ref && ref.length > 10) {
-    try {
-      const { urlFor } = require("@/lib/image");
-      const url = urlFor(project.mainImage).width(800).height(600).url();
-      if (url) return url;
-    } catch {
-      // Fallback si Sanity no está configurado
-    }
-  }
-  return PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length];
-}
-
-// Proyectos de ejemplo cuando Sanity no está configurado
-const FALLBACK_PROJECTS: Project[] = [
-  {
-    _id: "1",
-    title: "Vestidor Inteligente",
-    slug: { current: "vestidor-inteligente" },
-    location: "Caseros",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Vestidor con soluciones de almacenamiento optimizadas",
-  },
-  {
-    _id: "2",
-    title: "Cocina Integral",
-    slug: { current: "cocina-integral" },
-    location: "Tres de Febrero",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Cocina a medida con isla central",
-  },
-  {
-    _id: "3",
-    title: "Escritorio Flotante",
-    slug: { current: "escritorio-flotante" },
-    location: "Caseros",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Escritorio para espacio reducido",
-  },
-  {
-    _id: "4",
-    title: "Placard Modular",
-    slug: { current: "placard-modular" },
-    location: "Tres de Febrero",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Placard con interiores personalizados",
-  },
-  {
-    _id: "5",
-    title: "Cama Rebatible",
-    slug: { current: "cama-rebatible" },
-    location: "Caseros",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Solución para monoambiente",
-  },
-  {
-    _id: "6",
-    title: "Mesa de Comedor",
-    slug: { current: "mesa-comedor" },
-    location: "Tres de Febrero",
-    mainImage: {
-      _type: "image",
-      asset: { _ref: "", _type: "reference" },
-    },
-    description: "Mesa de roble macizo",
-  },
-];
-
-const PLACEHOLDER_IMAGES = [
-  "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800",
-  "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=800",
-  /* Escritorio / mueble flotante — imagen alternativa estable */
-  "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=800",
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800",
-  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
-  "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800",
-];
-
-function getProjectImage(project: Project, index: number): string {
-  return getImageUrl(project, index);
+function getImageUrl(image: Project["mainImage"], width: number, height: number): string | null {
+  const ref = image?.asset?._ref;
+  if (!ref) return null;
+  return urlFor(image)?.width(width).height(height).url() ?? null;
 }
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
   const [lightboxProject, setLightboxProject] = useState<Project | null>(null);
-  const displayProjects = projects.length > 0 ? projects : FALLBACK_PROJECTS;
+
+  if (projects.length === 0) return null;
 
   return (
     <>
@@ -119,30 +28,34 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
             Nuestro Destacado
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {displayProjects.map((project, index) => {
-              const projectTitle = project.location
+            {projects.map((project) => {
+              const imageUrl = getImageUrl(project.mainImage, 800, 600);
+              const label = project.location
                 ? `${project.title} - ${project.location}`
                 : project.title;
-              const imageUrl = getProjectImage(project, index);
 
               return (
                 <button
                   key={project._id}
                   type="button"
-                  className="group relative aspect-[4/3] overflow-hidden bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-[#4a3728]/25 focus:ring-offset-2"
+                  className="group relative aspect-[4/3] overflow-hidden bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-[#4a3728]/25 focus:ring-offset-2"
                   onClick={() => setLightboxProject(project)}
                 >
-                  <Image
-                    src={imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                  {imageUrl ? (
+                    <Image
+                      src={imageUrl}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-neutral-300" />
+                  )}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300 flex items-end">
                     <div className="w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <span className="text-white font-medium text-sm tracking-wide block">
-                        {projectTitle}
+                        {label}
                       </span>
                     </div>
                   </div>
@@ -153,7 +66,6 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
         </div>
       </section>
 
-      {/* Lightbox */}
       {lightboxProject && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
@@ -178,13 +90,17 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative aspect-video bg-neutral-800">
-              <Image
-                src={getProjectImage(lightboxProject, displayProjects.indexOf(lightboxProject))}
-                alt={lightboxProject.title}
-                fill
-                className="object-contain"
-                sizes="90vw"
-              />
+              {getImageUrl(lightboxProject.mainImage, 1400, 900) ? (
+                <Image
+                  src={getImageUrl(lightboxProject.mainImage, 1400, 900)!}
+                  alt={lightboxProject.title}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-neutral-700" />
+              )}
             </div>
             <p className="text-white text-center mt-4 font-medium">
               {lightboxProject.location
